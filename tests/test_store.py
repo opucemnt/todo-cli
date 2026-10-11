@@ -102,5 +102,12 @@ class TestTodoStore(unittest.TestCase):
             self.assertEqual(default_path(), Path.home() / ".todo-cli.json")
 
 
+    def test_done_twice_is_idempotent(self):
+        self.store.add("a")
+        self.assertTrue(self.store.done(1))
+        self.assertTrue(self.store.done(1))
+        self.assertTrue(self.store.get(1)["done"])
+
+
 if __name__ == "__main__":
     unittest.main()
