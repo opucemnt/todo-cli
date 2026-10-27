@@ -109,5 +109,10 @@ class TestTodoStore(unittest.TestCase):
         self.assertTrue(self.store.get(1)["done"])
 
 
+    def test_add_strips_whitespace(self):
+        todo = self.store.add("  买菜  ")
+        self.assertEqual(todo["title"], "买菜")
+
+
 if __name__ == "__main__":
     unittest.main()
