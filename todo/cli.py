@@ -22,6 +22,9 @@ def cmd_list(args, store):
         return
     for t in todos:
         print(fmt_todo(t))
+    if args.all:
+        pending = sum(1 for t in todos if not t["done"])
+        print(f"共 {len(todos)} 个任务，其中 {pending} 个待办")
 
 
 def cmd_done(args, store):
