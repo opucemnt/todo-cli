@@ -89,6 +89,7 @@ class TodoStore:
         if todo is None:
             return False
         todo["done"] = True
+        todo["done_at"] = datetime.now().isoformat(timespec="seconds")
         self.save()
         return True
 
